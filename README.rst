@@ -35,3 +35,16 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+Reference
+--------
+::
+
+  @inproceedings{urbano2017ties,
+    author = {Urbano, Juli{\'{a}}n and Marrero, M{\'{o}}nica},
+    booktitle = {ACM SIGIR International Conference on the Theory of Information Retrieval},
+    pages = {321--324},
+    title = {{The Treatment of Ties in AP Correlation}},
+    year = {2017}
+  }
