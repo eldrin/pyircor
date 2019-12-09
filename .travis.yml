@@ -14,4 +14,7 @@ deploy:
   on:
     tags: true
     repo: eldrin/pyircor
-    python: 3.6
+    python:
+      - 3.5
+      - 3.6
+      - 3.7
