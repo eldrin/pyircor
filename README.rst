@@ -16,7 +16,7 @@ pyircor
 
 
 
-is the Python implementation of the R package ircor__. ircor_ provides the implementation of various correlation coefficients of common use in Information Retrieval,
+is the Python implementation of the R package ircor_. ircor_ provides the implementation of various correlation coefficients of common use in Information Retrieval,
 such as Kendall and AP correlation coefficients, with and without ties.
 
 For reference please refer to Julián Urbano and Mónica Marrero, "`The Treatment of Ties in AP Correlation`_", ACM ICTIR, 2017.
