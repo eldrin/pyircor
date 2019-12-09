@@ -22,9 +22,8 @@ def _tauap(x, y, rx, ry):
     numerator = 0
     for i in range(n-1):
         for j in range(i+1, n):
-            sx = (x[i] - x[j]) > 0
-            sy = (y[i] - y[j]) > 0
-
+            sx = np.sign(x[i] - x[j])
+            sy = np.sign(y[i] - y[j])
             if sx == sy:
                 # since we don't traverse in sored order, divide by the max rank
                 numerator += 1 / (max(ry[i], ry[j]) - 1)
@@ -57,8 +56,8 @@ def _tauap_a(rx, ry, p, t):
             if p[j] >= p[i]:
                 continue
 
-            sx = rx[i] > rx[j]
-            sy = ry[i] > ry[j]
+            sx = np.sign(rx[i] - rx[j])
+            sy = np.sign(ry[i] - ry[j])
 
             if sx == sy:
                 c_above += 1
@@ -112,8 +111,8 @@ def _tauap_b_ties(rx, ry, p):
             if p[j] >= p[i]:
                 continue
     
-            sx = rx[i] > rx[j]
-            sy = ry[i] > ry[j]
+            sx = np.sign(rx[i] - rx[j])
+            sy = np.sign(ry[i] - ry[j])
 
             if sx == sy:
                 c_above += 1
