@@ -109,3 +109,17 @@ class TestPyircor(unittest.TestCase):
         self.assertAlmostEqual(tauap.tauap_b(set1['y_ties'], set1['x_ties']), 0.7321, delta=5e-5)
         self.assertAlmostEqual(tauap.tauap_b(set2['y_ties'], set2['x_ties']), 0.297, delta=5e-5)
         self.assertAlmostEqual(tauap.tauap_b(set3['y_ties'], set3['x_ties']), -.7047, delta=5e-5)
+    
+    def test_all_ties_bmodels(self):
+        # check all `b` models correctly outputs undefined numbers {-np.inf, +np.inf, np.nan}
+        import math
+
+        full_tie = [0] * 10
+        for vec in [set1['x'], set2['x'], set3['x']]:
+            res = tauap.tauap_b(vec, full_tie)
+            judge = math.isnan(res) or math.isinf(res)
+            self.assertEqual(judge, True)
+
+            res2 = tauap.tauap_b(full_tie, vec)
+            judge = math.isnan(res2) or math.isinf(res2)
+            self.assertEqual(judge, True)

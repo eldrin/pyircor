@@ -23,7 +23,6 @@ For reference please refer to Julián Urbano and Mónica Marrero, "`The Treatmen
 .. _ircor: https://github.com/julian-urbano/ircor
 
 * Free software: MIT license
-.. * Documentation: https://pyircor.readthedocs.io.
 
 
 Installation
@@ -63,6 +62,7 @@ as should be for instance if the scores represent system effectiveness. When the
   tauap(x, y)
   # 0.7491181657848325
   tauap(-x, -y, decreasing=False)
+  # 0.7491181657848325
 
 `tau_a` and `tauap_a` are versions to use when `x` represents a true ranking without ties, and `y` represents a ranking
 estimated by an observer who is allowed to produce ties. They can be used as a measure of accuracy of the observer with
@@ -72,6 +72,7 @@ respect to the true ranking
 
   from pyircor.tau import tau_a
   from pyircor.tauap_a import tauap_a
+
   y = np.round(y * 5) / 5
   tau_a(x, y)
   # 0.7111111111111111
