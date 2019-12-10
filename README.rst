@@ -30,7 +30,8 @@ Installation
 ------------
 You may install the stable release from PyPI using `pip`
 
-::
+.. code-block::
+
   pip install pyircor
 
 Usage
