@@ -23,7 +23,6 @@ For reference please refer to Julián Urbano and Mónica Marrero, "`The Treatmen
 .. _ircor: https://github.com/julian-urbano/ircor
 
 * Free software: MIT license
-.. * Documentation: https://pyircor.readthedocs.io.
 
 
 Installation
