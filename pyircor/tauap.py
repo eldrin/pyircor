@@ -129,7 +129,7 @@ def tauap_b_ties(x, y, decreasing=True):
     return _tauap_b_ties(rx, ry, p)
 
 
-@nb.njit
+@nb.njit('f8(f8[:], i8[:], i8[:])', error_model='numpy')
 def _tauap_b_ties(rx, ry, p):
     """Helper function for faster computation"""
     c_all = 0
