@@ -23,17 +23,77 @@ For reference please refer to Julián Urbano and Mónica Marrero, "`The Treatmen
 .. _ircor: https://github.com/julian-urbano/ircor
 
 * Free software: MIT license
-* Documentation: https://pyircor.readthedocs.io.
+.. * Documentation: https://pyircor.readthedocs.io.
 
 
-.. Features
-.. --------
+Installation
+------------
+You may install the stable release from PyPI using `pip`
 
-.. * TODO
+::
+  pip install pyircor
+
+Usage
+-----
+`tau` and `tauap` implement the Kendall tau and Yilmaz tauAP correlation coefficients, where no ties are allowed between items:
+
+.. code-block:: python
+
+  from pyircor.tau import tau
+  from pyircor.tauap import tauap
+  import nupmy as np
+
+  x = np.array([0.06, 0.2, 0.27, 0.37, 0.57, 0.63, 0.66, 0.9, 0.91, 0.94])
+  y = np.array([0.37, 0.06, 0.2, 0.27, 0.57, 0.66, 0.63, 0.91, 0.9, 0.94])
+  tau(x, y)
+  # 0.7777777777777778
+  tauap(x, y)
+  # 0.7491181657848325
+
+In `tauap` it is important to use the correct sorting order. By default, items are sorted in decreasing order,
+as should be for instance if the scores represent system effectiveness. When they should be in increasing order,
+`decreasing` should be set to `False`:
+
+.. code-block:: python
+
+  from pyircor.tauap import tauap
+
+  # these two calls are equivalent
+  tauap(x, y)
+  # 0.7491181657848325
+  tauap(-x, -y, decreasing=False)
+
+`tau_a` and `tauap_a` are versions to use when `x` represents a true ranking without ties, and `y` represents a ranking
+estimated by an observer who is allowed to produce ties. They can be used as a measure of accuracy of the observer with
+respect to the true ranking
+
+.. code-block:: python
+
+  from pyircor.tau import tau_a
+  from pyircor.tauap_a import tauap_a
+  y = np.round(y * 5) / 5
+  tau_a(x, y)
+  # 0.7111111111111111
+  tauap_a(x, y)
+  # 0.6074514991181656
+
+`tau_b` and `tauap_b` are versions to use under the assumption that both `x` and `y` represent rankings estimated by two
+observers who may produce ties. They can be used as a measure of agreement between the observers:
+
+.. code-block:: python
+
+  x = np.round(x * 5) / 5
+  tau_b(x, y)
+  # 0.75
+  tauap_b(x, y)
+  # 0.626984126984127
 
 
 Credits
 -------
+
+Along with the codebase itself, many parts of this package, including docstrings and comments, are directly adopted under the
+original authors' agreement. Please refer to the original work if you want to use this package for any publication.
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
