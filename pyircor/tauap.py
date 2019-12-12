@@ -108,6 +108,51 @@ def _tauap_a(rx, ry, p, t):
 
 
 @check_inputs('b')
+def tauap_a_sign(x, y, decreasing=True):
+    """AP-a Rank Correlation Coefficients
+
+    this version allows ties in reference signal `x`
+
+    Inputs:
+        x (Iterable of numeric): true scores
+        y (Iterable of numeric): estimated scores for comparison
+    
+    Returns:
+        float: the correlation coefficient.
+    """
+    rx = stats.rankdata(x)
+    ry = stats.rankdata(y, 'ordinal')  # ties.method='first'
+    p = stats.rankdata(y, 'min') - 1
+    t = np.bincount(p)[p]  # uses large memory to speed up
+    return _tauap_a(rx, ry, p, t)
+
+
+@nb.njit('f8(f8[:], i8[:], i8[:], i8[:])')
+def _tauap_a_sign(rx, ry, p, t):
+    """
+    """
+    n = len(rx)
+    c_all = 0
+    for i in range(len(p)):
+        if p[i] == 0:
+            continue
+        
+        c_above = 0
+        for j in range(len(p)):
+            if p[j] >= p[i]:
+                continue
+
+            sx = np.sign(rx[i] - rx[j])
+            sy = np.sign(ry[i] - ry[j])
+
+            c_above += sx * sy
+        s_above = np.sum( 1 / (p[i] + np.arange(t[i])) / t[i] )
+        c_all += c_above * s_above
+    
+    return c_all / (n-1)
+
+
+@check_inputs('b')
 def tauap_b(x, y, decreasing=True):
     """AP-b Rank Correlation Coefficient
 
