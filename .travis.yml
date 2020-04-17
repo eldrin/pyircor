@@ -1,8 +1,8 @@
 language: python
 python:
+- 3.8
 - 3.7
 - 3.6
-- 3.5
 install: pip install -U tox-travis
 script: tox
 deploy:
@@ -15,6 +15,6 @@ deploy:
     tags: true
     repo: eldrin/pyircor
     python:
-      - 3.5
       - 3.6
       - 3.7
+      - 3.8
