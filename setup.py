@@ -23,7 +23,7 @@ test_requirements = [ ]
 setup(
     author="Jaehun Kim",
     author_email='jaehun.j.kim@gmail.com',
-    python_requires='>=3.5, <3.8',
+    python_requires='>=3.6, <=3.8',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
