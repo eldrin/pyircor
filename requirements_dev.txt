@@ -8,5 +8,5 @@ coverage==5.3
 Sphinx==3.3.0
 twine==3.2.0
 numpy==1.19.4
-numba==0.51.2
+numba==0.56.0
 scipy==1.5.4
