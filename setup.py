@@ -11,9 +11,9 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'numpy==1.18.2',
-    'numba==0.49.0',
-    'scipy==1.4.1'
+    'numpy==1.26.0',
+    'numba==0.58.1',
+    'scipy==1.12.0'
 ]
 
 setup_requirements = [ ]
@@ -23,7 +23,7 @@ test_requirements = [ ]
 setup(
     author="Jaehun Kim",
     author_email='jaehun.j.kim@gmail.com',
-    python_requires='>=3.6, <=3.8',
+    python_requires='>=3.6, <=3.12',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
